@@ -1,31 +1,8 @@
-name: Build CSC BALIGHAT APK
+# CSC BALIGHAT App 2 — starter project
 
-on:
-  workflow_dispatch:
-  push:
-    branches: [main]
+This is a starter Android app. It shows an Assamese welcome screen and a button that uses Android Text-to-Speech where Assamese voice data is available.
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Set up Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '17'
-      - name: Set up Gradle
-        uses: gradle/actions/setup-gradle@v4
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-      - name: Install Android SDK
-        run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
-      - name: Build APK
-        run: gradle assembleDebug
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: CSC-BALIGHAT-App2-APK
-          path: app/build/outputs/apk/debug/app-debug.apk
+**Important:** This is not the complete requested app. The “Hey CSC” always-listening wake word, PIN lock, and secure security-question recovery are not implemented yet. Do not use this starter as a secure PIN/recovery system.
+
+## Build
+Use Android Gradle Plugin 8.7.3, Kotlin 2.0.21, JDK 17, and Android SDK 35.
